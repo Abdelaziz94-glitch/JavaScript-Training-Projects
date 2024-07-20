@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="all.min.css">
+    <title>Creating notes application</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        body{
+            background-image: linear-gradient(135deg, #7b269c, rgb(134, 193, 204));
+            width: 100vw;
+            height: 100vh;
+        }
+        #section1{
+            display: flex;
+            margin-left: 100px;
+            margin-top: 100px;
+            justify-content: flex-start;
+            flex-direction: row;
+        }
+        #section1 img{
+            width:75px;
+            height: 75px;
+        }
+        #section1 h1{
+            text-transform: capitalize;
+            font-size: 40px;
+            color: white;
+        }
+        button{
+            margin-left: 100px;
+            border-radius: 10px;
+            border-style: none;
+            width:300px;
+            height:50px;
+            background-color: #4b0347;
+            color:white;
+            font-size: 30px;
+            text-transform: capitalize;
+            text-decoration: wavy;
+            text-transform: capitalize;
+        }
+        button i{
+            font-size: 30px;
+            margin-right: 10px;
+            margin-left: -20px;
+        }
+        #section2{
+            display: flex;
+            margin-top: 20px;
+            margin-left: 100px;
+            justify-content: flex-start;
+            flex-direction: column;
+            gap:10px;
+        }
+        textarea{
+            width: 500px;
+            height: 120px;
+            border-radius: 5px;
+            border-style: none;
+            color: rgb(44, 43, 43);
+            padding:5px;
+            z-index: 0;
+        }
+        #section2 i{
+            font-size: 20px;
+            margin-top:-35px;
+            margin-left: 470px;
+            color: gray;
+            z-index: 1;
+        }
+        #section2 i:hover{
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="section1">
+        <img src="notes.png" alt="you have written a wrong code">
+        <h1>notes</h1>
+    </div>
+    <button><i class="fa-regular fa-pen-to-square"></i>create notes</button>
+    <div id="section2">
+        <!-- you have to replace this code by js code -->
+        <!-- <textarea></textarea>
+        <i class="fa-solid fa-eraser"></i> -->
+    </div>
+    <script>
+        // selectors 
+        let btn = document.querySelector("button")
+        let textAreaContainer = document.getElementById("section2")
+        let eraser = document.querySelector("#section2 i")
+
+        // creating an array which includes the teaxt areas to push and pop the text areas
+        let arr = []
+
+        // functionality (fun number 1)
+        btn.addEventListener("click",function(){
+            let content =`<textarea></textarea>
+                          <i class="fa-solid fa-eraser"></i>
+                        `
+            let textArea = document.createElement("textarea")
+            let icon2 = document.createElement("i")
+            icon2.className = "fa-solid fa-eraser"     
+            textAreaContainer.appendChild(textArea)
+            textAreaContainer.appendChild(icon2)  
+
+            
+            
+
+            arr.push({textArea,icon2})
+            
+ 
+            icon2.addEventListener("click",function(){
+                textAreaContainer.removeChild(textArea)
+                textAreaContainer.removeChild(icon2)  
+            })
+        })
+
+    </script>
+</body>
+</html>
