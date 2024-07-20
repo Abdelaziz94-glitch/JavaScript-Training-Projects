@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="any name" content="add any description">
+        <!-- normalize sheet -->
+        <link rel="stylesheet" href="normalize.css">
+        <!-- font awesome -->
+        <link rel="stylesheet" href="all.min.css">
+        <!-- font family -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <style>
+            *{
+                padding:0;
+                margin:0;
+                box-sizing: border-box;
+                scroll-behavior: smooth;
+            }
+            body{
+                background-image: linear-gradient(to left,  rgb(160, 6, 180),rgb(209, 122, 212));
+                background-image: linear-gradient(135deg, #4203a9, #90bafc);
+                width:100vw;
+                height: 96vh;
+            }
+            p{
+                padding-left:100px;
+                margin-top: 20px;  
+                font-size: 50px;
+                text-transform: capitalize;      
+                font-family: "Poppins", sans-serif;
+                font-weight: 500;
+                font-style: normal;        
+            }
+            p:first-child{
+                padding-top:100px;     
+                /* padding-bottom: 50px;            */
+            }
+            #thesecondp{
+                color:rgb(114, 168, 13);
+            }
+            div{
+                background-color: rgb(255, 255, 255, 0.3);
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width:40%;
+                height: 100px;
+                margin-left: 100px;
+                gap:20px;
+            }
+            div input{
+                /* margin-left: -50px; */
+                height: 40px;
+                width: 400px;
+                border-style: none;
+                border-radius: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            button{
+                height: 40px;
+                width: 100px;
+                background-color: rgb(114, 168, 13);
+                color: black;
+                font-size: 20px;
+                text-transform: capitalize;
+                border-radius: 5px;
+                border: 0;
+            }
+            h3{
+                font-size: 25px;
+                padding-left:100px;
+                color: #90bafc;
+                margin-top: 20px;
+                text-transform: capitalize;
+            }
+        </style>
+        <title>Age Calculator</title>
+    </head>
+    <body>
+        <p>javaScript</p>
+        <p id="thesecondp" style="margin-bottom: 30px;">age calculator</p>
+        <div>
+            <input type="date" placeholder="please select the date">
+            <button>calculate</button>
+        </div>
+        <h3 id="para">you are 30 years, 4 months and 0 days old</h3>
+        <script>
+            // selectors 
+            let theInputField = document.querySelector("input")
+            let btn = document.querySelector("button")
+            btn.onclick=function(){
+                let currentDate = new Date()
+                let monthsAre = currentDate.getMonth()+1
+                let daysAre = currentDate.getDate()
+                let yearsAre = currentDate.getFullYear()
+                document.getElementById("para").innerHTML = `you are ${yearsAre-theInputField.value.split("-")[0]} years, ${monthsAre-theInputField.value.split("-")[1]} months and ${daysAre-theInputField.value.split("-")[2]} days old`
+            }
+
+        </script>
+    </body>
+</html>
