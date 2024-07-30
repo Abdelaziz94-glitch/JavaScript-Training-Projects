@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styling sheet.css">
+    <link rel="stylesheet" href="all.min.css">
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        body{
+            background-color:#002339;
+            text-align: left;
+            padding-top:100px;
+            padding-left: 300px; 
+        }
+        h2 {
+            color: rgb(4, 143, 4);
+            text-transform: capitalize;
+            margin: 15px 0;
+            font-size: 40px;
+            width:500px;
+            position: relative; /* Optional, for better control */
+        }
+
+        h2::after {
+            content: "";
+            display: block;
+            width: 65%;
+            height: 2px;
+            background-color: rgb(4, 143, 4); /* Match the color of the h2 text */
+            margin-top: 10px; /* Space between h2 and the line */
+        }
+        div input{
+            width: 400px;
+            height: 50px;
+            border-radius: 5px;
+            border-style: none;
+        }
+        div i{
+            margin-left: -35px;
+            font-size: 20px;
+            color:rgb(4, 143, 4);
+        }
+        button{
+            width: 300px;
+            height: 50px;
+            border-radius: 5px;
+            border-style: none;
+            background-color: rgb(4, 143, 4);
+            margin-top: 20px;
+            color:white;
+            font-size: 16px;
+            text-transform: capitalize;
+        }
+        button i{
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+    </style>
+    <title>creating rondomly password</title>
+</head>
+<body>
+    <h1 style="text-transform: capitalize;color:white;font-size:40px;">generate <span style="text-transform: lowercase;">a</span></h1>
+    <h2>rondom password</h2>
+    <div>
+        <input type="text" placeholder="Click generate to insert a rondom password" id="input_field">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+    <button><i class="fa-solid fa-bolt"></i>generate password</button>
+    <script>
+        // selectors
+        let btn = document.querySelector("button")
+        let btn_copy = document.querySelector("div i")
+        let theInputField = document.querySelector("input")
+
+        // variables naming 
+        var colors = Math.random()
+        var upperCaseLetters = "ABCDELFGHIJKLMNOPQRSTUVWXYZ"
+        var lowerCaseLetters = "abcdelfghijklmnopqrstuvwxyz"
+        var specialChar = "@#$%^&*()_+?*\/";
+        var num = "1234567890"
+        var totalSum = upperCaseLetters + lowerCaseLetters + specialChar + num
+        console.log(totalSum)
+
+        // the functionality 
+        // function no. 1
+        // the function of creating a rondom password
+        btn.onclick = function(){
+            let password = "";
+            password += upperCaseLetters[Math.floor(Math.random()*upperCaseLetters.length)]
+            password += lowerCaseLetters[Math.floor(Math.random()*lowerCaseLetters.length)]
+            password += specialChar[Math.floor(Math.random()*specialChar.length)]
+            password +=num[Math.floor(Math.random()*num.length)]
+            console.log(password)
+            let mathEquation = Math.floor(Math.random()*totalSum.length)
+            theInputField.value = totalSum[mathEquation]+password
+        }  
+        
+        // function no. 2
+        // the function of taking a copy 
+        btn_copy.onclick=function(){
+            theInputField.select()
+            document.execCommand("copy")
+        }
+
+    </script>
+</body>
+</html>
