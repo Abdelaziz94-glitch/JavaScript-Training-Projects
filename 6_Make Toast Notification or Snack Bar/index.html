@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- links -->
+     <link rel="stylesheet" href="all.min.css">
+     <link rel="stylesheet" href="normalize.css">
+     <!-- fonts link  -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap" rel="stylesheet">
+    <title>Make Toast Notification or Snack Bar</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        body{
+            background-image: linear-gradient(135deg, rgb(59, 59, 119), rgb(140, 140, 146));
+            width:calc(100vw - 100px);
+            min-height:100vh;
+            height: calc(100vh - 100px);
+            font-family: "Kaisei Decol", serif;
+            font-weight: 200;
+            font-style: normal;
+        }
+        #firstContainer{
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            width: 30%;
+            height: 30px;
+            margin: 100px 100px 200px;
+            gap: 20px;
+        }
+        button{
+            width: 90%;
+            height: 100%;
+            border: 1px solid transparent;
+            outline: none;
+            border-radius: 10px;
+            font-size: 1em;
+            text-transform: capitalize;
+        }
+        #secondContainer{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 95%;
+            min-height: 300px;
+            margin: 100px 100px 300px;
+            gap: 20px;
+        }
+        #secondContainer div{
+            width: 35%;
+            height: 60px;
+            background-color: white;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+            padding-left: 20px;
+            font-size: 1.2em;
+            text-transform: capitalize;
+        }
+        
+        #first::after{
+            content: "";
+            margin-top: 60px;
+            width: 105%;
+            height: 5px;
+            background-color: red;
+            margin-left: -276px;
+            animation: theBorder 6s forwards linear;
+        }
+        #second::after{
+            content: "";
+            margin-top: 60px;
+            width: 105%;
+            height: 5px;
+            background-color: green;
+            margin-left: -295px;
+            animation: theBorder 6s forwards linear;
+        }
+        #third::after{
+            content: "";
+            margin-top: 60px;
+            width: 105%;
+            height: 5px;
+            background-color: rgb(163, 163, 6);
+            margin-left: -315px;
+            animation: theBorder 6s forwards linear;
+        }
+        #first i{
+            color: red;
+        }
+        #second i{
+            color: green;
+        }
+        #third i{
+            color: rgb(163, 163, 6);
+        }
+        @keyframes theBorder {
+            0%{
+                width: 0;
+            }
+            100%{
+                width: 105%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="firstContainer">
+        <button id="firstClick">error</button>
+        <button id="secClick">sucess</button>
+        <button id="thirdClick">invalid</button>
+    </div>
+    <div id="secondContainer">
+        <!-- this code will created by js -->
+    </div>
+    <!-- the scripting code -->
+     <script>
+        // Selectors 
+        let btn1 = document.getElementById("firstClick")
+        let btn2 = document.getElementById("secClick")
+        let btn3 = document.getElementById("thirdClick")
+
+        // functions 
+        btn1.onclick=function(){
+            let content1 = `<div id="first"><i class="fa-regular fa-circle-xmark"></i>please fix the error!</div>`
+            document.getElementById("secondContainer").innerHTML += content1
+            setTimeout(() => {
+                document.getElementById("first").style.visibility="hidden"
+                console.log("1")
+            }, 6000);
+        }
+        btn2.onclick=function(){
+            let content2 = `<div id="second"><i class="fa-regular fa-circle-check"></i>successfully submitted</div>`
+            document.getElementById("secondContainer").innerHTML += content2;
+            setTimeout(() => {
+                document.getElementById("second").style.visibility="hidden"
+                console.log("1")
+            }, 6000);
+        }
+        btn3.onclick=function(){
+            let content3 = `<div id="third"><i class="fa-solid fa-exclamation"></i>invalid input, check again</div>`
+            document.getElementById("secondContainer").innerHTML += content3
+            setTimeout(() => {
+                document.getElementById("third").style.visibility="hidden"
+                console.log("1")
+            }, 6000);
+        }
+     </script>
+</body>
+</html>
